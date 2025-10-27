@@ -1,4 +1,6 @@
-
+from healthcare_py import df
+from Business_Insights_Summary import summary
+readme = f"""
 # Healthcare Claims Analytics
 
 ## 📌 Project Overview
@@ -6,8 +8,8 @@ This project performs an end-to-end analysis of a healthcare claims dataset to u
 
 ## 📂 Dataset
 - File: CMS_Healthcare.csv
-- Records: 1048575
-- Features: 18
+- Records: {df.shape[0]}
+- Features: {df.shape[1]}
 
 ## ⚙️ Tools Used
 - Python (Pandas, NumPy)
@@ -28,16 +30,7 @@ This project performs an end-to-end analysis of a healthcare claims dataset to u
 - Rejection heatmap by region
 
 ## ✅ Insights
-
-Key Business Insights:
-
-1. Top 5 providers account for a significant portion of total claim costs, indicating concentration of services.
-2. BETOS categories reveal costlier service types, valuable for budgeting and audit focus.
-3. Rejection rates vary significantly by region (pricing locality), indicating opportunities for provider training or policy review.
-4. The average payment per assigned service is $90.52, a good proxy for service-level efficiency and reimbursement quality.
-5. Common claim types suggest where volume is concentrated—opportunities for optimization or automation.
-
-
+{summary}
 
 ## 🚀 How to Run
 1. Place `CMS_Healthcare.csv` in your working directory.
@@ -45,3 +38,11 @@ Key Business Insights:
 3. View results and modify for your business context.
 
 ---
+"""
+
+# Save to README.md
+with open("README.md", "w", encoding="utf-8") as f:
+    f.write(readme)
+
+
+print("README.md generated.")
